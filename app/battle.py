@@ -1,14 +1,18 @@
 from app.knight import Knight
 
 
-def fight(knight1: Knight, knight2: Knight) -> None:
-    print(f"{knight1.name} vs {knight2.name} begins!")
-    while knight1.hp > 0 and knight2.hp > 0:
-        knight2.take_damage(knight1.power)
-        if knight2.hp <= 0:
-            print(f"{knight1.name} wins!")
-            break
-        knight1.take_damage(knight2.power)
-        if knight1.hp <= 0:
-            print(f"{knight2.name} wins!")
-            break
+def knights_battle(knights: list[Knight]) -> dict:
+    results = {knight.name: 0 for knight in knights}
+
+    for i, knight in enumerate(knights):
+        for j, opponent in enumerate(knights):
+            if i == j:
+                continue
+            damage = max(0, knight.power - opponent.protection)
+            opponent.hp -= damage
+
+    for knight in knights:
+        if knight.hp > 0:
+            results[knight.name] = knight.hp
+
+    return results
