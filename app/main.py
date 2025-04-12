@@ -1,25 +1,15 @@
-from app.config import KNIGHTS
+from config import knights_config
 from app.knight import Knight
 from app.battle import fight
 
+def battle():
+    # Створення об'єктів Knight
+    knights = {name: Knight(config) for name, config in knights_config.items()}
 
-def battle(knights_config):
-    lancelot = Knight(knights_config["lancelot"])
-    mordred = Knight(knights_config["mordred"])
-    arthur = Knight(knights_config["arthur"])
-    red_knight = Knight(knights_config["red_knight"])
+    # Проведення боїв
+    fights = [('lancelot', 'mordred'), ('arthur', 'red_knight')]
+    for name1, name2 in fights:
+        fight(knights[name1], knights[name2])
 
-    fight(lancelot, mordred)
-    fight(arthur, red_knight)
-
-    return {
-        lancelot.name: lancelot.hp,
-        mordred.name: mordred.hp,
-        arthur.name: arthur.hp,
-        red_knight.name: red_knight.hp,
-    }
-
-
-if __name__ == "__main__":
-    result = battle(KNIGHTS)
-    print(result)
+    # Повернення результатів
+    return {knight.name: knight.hp for knight in knights.values()}
