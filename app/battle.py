@@ -1,4 +1,7 @@
-def fight(knight1, knight2):
+from app.knight import Knight
+
+
+def fight(knight1: Knight, knight2: Knight) -> None:
     print(f"{knight1.name} vs {knight2.name} begins!")
     while knight1.hp > 0 and knight2.hp > 0:
         knight2.take_damage(knight1.power)
