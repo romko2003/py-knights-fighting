@@ -1,4 +1,4 @@
-from config import knights_config
+from app.config import knights_config
 from app.knight import Knight
 from app.battle import fight
 from typing import Dict
