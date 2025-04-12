@@ -1,16 +1,13 @@
-class Weapon:
-    def __init__(self, name: str, power: int):
-        self.name = name
-        self.power = power
+class Sword:
+    def __init__(self, damage: int) -> None:
+        self.damage = damage
 
 
-class Armour:
-    def __init__(self, part: str, protection: int):
-        self.part = part
-        self.protection = protection
+class Shield:
+    def __init__(self, defense: int) -> None:
+        self.defense = defense
 
 
 class Potion:
-    def __init__(self, name: str, effect: dict):
-        self.name = name
-        self.effect = effect
+    def __init__(self, heal: int) -> None:
+        self.heal = heal
