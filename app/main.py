@@ -17,7 +17,7 @@ def battle(knights_config):
         mordred.name: mordred.hp,
         arthur.name: arthur.hp,
         red_knight.name: red_knight.hp,
-    }b
+    }
 
 
 if __name__ == "__main__":
